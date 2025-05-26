@@ -1,13 +1,13 @@
 # Trading_Insight_RAG
 
-This project generates real-time trading insights for cryptocurrency markets by analyzing news headlines and market data using a quantized large language model (LLM) and Retrieval-Augmented Generation (RAG) pipeline.
+This project generates real-time trading insights for stock markets by analyzing core market data, fundamental data, corporate events and external context using a quantized large language model (LLM) and Retrieval-Augmented Generation (RAG) pipeline.
 
 ## Features
-- Real-time data ingestion from Yahoo Finance and crypto news APIs
+- Real-time data ingestion from Yahoo Finance
 - Vector database (ChromaDB + FAISS) for efficient retrieval
 - Quantized LLM (LLaMA or similar) via `llama-cpp-python` for local inference
 - RAG pipeline for contextual insight generation
-- Actionable output including key market movers and sentiment-driven takeaways
+- Output displays the insights behind market movements 
 
 ## Tech Stack
 - Python 3.13
