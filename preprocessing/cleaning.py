@@ -23,29 +23,6 @@ def clean_fundamental_data(df: pd.DataFrame) -> pd.DataFrame:
     df = df.fillna("N/A") # Replace NaNs with "N/A"
     return df
     
-# Clean Corporate Events data
-def clean_corporate_event_data(df: pd.DataFrame) -> pd.DataFrame:
-    df.columns = df.columns.str.strip().str.lower().str.replace(" ", "_")
-    if 'index' in df.columns:
-        df = df.rename(columns={'index': 'date'})
-        
-    if 'date' in df.columns:
-        df['date'] = pd.to_datetime(df['date'], utc=True)
-        
-    df = df.dropna(axis=1, how='all') # Drop columns that hold entirely NaN values
-    threshold = int(df.shape[1] * 0.5) # Drop rows with more than 50% missing values
-    df = df.dropna(thresh=threshold)
-    df = df.loc[:, df.nunique(dropna=False) > 1] # Drop columns that hold the same value across all records
-    df = df.fillna("N/A") # Replace NaNs with "N/A"
-    return df
-
-# Clean Corporate Calender data
-# Seperate function as the structure is unique
-def clean_corporate_calender_data(df: pd.DataFrame) -> pd.DataFrame:
-    df.columns = df.columns.str.strip().str.lower().str.replace(" ", "_")
-    df = df.dropna(axis=1, how='all') # Drop columns that hold entirely NaN values
-    return df
-    
 # Clean External News data
 def clean_external_data(df: pd.DataFrame) -> pd.DataFrame:
     df = df.drop_duplicates()
