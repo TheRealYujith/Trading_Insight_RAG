@@ -1,6 +1,5 @@
 from sentence_transformers import SentenceTransformer
 import chromadb
-from chromadb.config import Settings
 
 embedding_model = SentenceTransformer("yiyanghkust/finbert-tone")
 
