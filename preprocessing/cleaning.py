@@ -21,5 +21,6 @@ def clean_fundamental_data(df: pd.DataFrame) -> pd.DataFrame:
     threshold = int(df.shape[1] * 0.5) # Drop rows with more than 50% missing values
     df = df.dropna(thresh=threshold)
     df = df.loc[:, df.nunique(dropna=False) > 1] # Drop columns that hold the same value across all records
-    df = df.fillna("Unkown") # Replace NaNs with "N/A"
+    df = df.fillna("Unknown") # Replace NaNs with "N/A"
+    df = df.infer_objects(copy=False)
     return df
