@@ -3,7 +3,7 @@ import pandas as pd
 # Clean Core Market data
 def clean_core_market_data(df: pd.DataFrame) -> pd.DataFrame:
     df.columns = df.columns.str.strip().str.lower().str.replace(" ", "_")
-    df['date'] = pd.to_datetime(df['date'])
+    df['date'] = pd.to_datetime(df['date'], utc=True)
     df = df.dropna(axis=1, how='all') # Drop columns that hold entirely NaN values
     df = df.loc[:, df.nunique(dropna=False) > 1] # Drop columns that hold the same value across all records
     df = df.dropna(subset=["close"])
